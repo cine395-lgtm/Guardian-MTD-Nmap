@@ -1,56 +1,62 @@
-# ANmap Wrapper
 
-Nmap wrapper for Android
 
-This is not an official Nmap application. To know more about Nmap and its features visit the
-official homepage of the project: [https://nmap.org](https://nmap.org)
+# 🛡️ Guardian MTD & NDR Core
+**Advanced Mobile Threat Defense & Network Detection Response Framework for Android**
 
-## History
+Guardian MTD è una suite nativa e modulare progettata per l'analisi forense della rete, il monitoraggio della telemetria in tempo reale e il mitigamento attivo delle minacce (MitM/DNS Sinkhole) direttamente su dispositivi mobili basati su Android 17 contesti protetti.
 
-In 2016 I applied for a GSoC at Nmap with a bid for an Android port of Nmap. I built an ugly
-prototype with a cross-compiled Nmap shared library, a C wrapper and a simple Android activity to
-interact with it. The bid was not successful, and probably for good reasons.
+Il progetto evolve l'architettura iniziale di un wrapper Nmap, trasformandola in un ecosistema di sicurezza aziendale orientato al Blue Team.
 
-In 2022, I thought it would still be nice to be able to run Nmap from time to time from my
-smartphone. I took the original prototype, polished it a bit and packaged it. It's still ugly, but
-it does its job. And maybe angry user feedback will motivate me to spend some time on it.
+---
 
-## How to install it
+## 🔬 Architettura Ingegneristica & Componenti Core
 
-The application is available on
-[Google Play](https://play.google.com/store/apps/details?id=com.werebug.anmapwrapper).
+Il framework si divide in moduli strategici a basso livello che cooperano in background in modo asincrono:
 
-You can also install an APK from
-the [release page](https://github.com/ruvolof/anmap-wrapper/releases) here on GitHub.
-However, releases here on GitHub will generally lag behind those on Google Play.
+### 1. ⚙️ Porting Nativo Nmap (C++ via Android NDK)
+Integrazione dei binari nativi di Nmap stabili, cross-compilati per architetture mobili (`arm64-v8a`, `armeabi-v7a`, `x86`, `x86_64`) tramite Android NDK. 
+* Consente l'esecuzione di **Network Audit Task** avanzati, scansioni veloci (`-F`), script NSE (`--script banner`) e asset mapping di intere sottoreti direttamente dal dispositivo senza requisiti di root (`--unprivileged`).
 
-## How to contribute
+### 2. 🔀 Network Detection & Response (NDR) Engine
+Inizializzazione di un contesto di routing isolato tramite l'interfaccia nativa `VpnService` di Android.
+* Creazione di un tunnel virtuale privato (interfaccia TUN) che cattura e ispeziona a basso livello la totalità dei pacchetti IP in transito generati dal dispositivo.
 
-Contributions are welcome.
+### 3. 🛑 DNS Firewall Policy Engine & Sinkhole
+Intercettazione granulare di tutte le richieste UDP sulla porta `53`.
+* Modulo di filtraggio deterministico che analizza le richieste DNS applicando istantaneamente regole di blocco (*Policy Deny Rules*) a caldo contro domini malevoli, server C2 o tracker pubblicitari, agendo come un sinkhole di rete locale.
 
-### How to cross-compile Nmap
+### 4. 🔑 Crittografia Applicata & CertificateEngine (TLS Proxy)
+Implementazione di logiche crittografiche avanzate per l'ispezione dei flussi cifrati:
+* **Root CA Privata:** Generazione nativa di coppie di chiavi RSA a 2048 bit e certificati root X.509 archiviati in un keystore PKCS12 sicuro sul dispositivo.
+* **Handshake SNI Extraction:** Un proxy trasparente ServerSocket estrae l'estensione SNI (*Server Name Indication*) durante l'handshake TLS, identificando la destinazione reale prima della cifratura.
+* **On-the-fly Signing:** Predisposizione per la firma automatica dei certificati per sbloccare l'ispezione Deep Packet sulle connessioni HTTPS.
 
-Be aware that the script to compile Nmap is based on my development environment. You might need to
-fix some paths for it to be working on your system.
+### 5. 📬 Automazione Forense e Reportistica Remota (WorkManager)
+Progettato per l'auditing e il monitoraggio a lungo termine in mobilità:
+* Un modulo `PcapWriter` proprietario scrive i pacchetti catturati direttamente in formato standard `.pcap` (struttura forense con timestamp granulari).
+* Ogni 48 ore, un Worker asincrono di sistema gestito via **WorkManager** impacchetta la telemetria raccolta e la inoltra automaticamente tramite un canale sicuro via SMTP per l'analisi e il debriefing centralizzato su **Wireshark**.
 
-```
+---
+
+## 🛠️ Stack Tecnologico
+* **Core Language:** Kotlin / C++ (JNI Layer)
+* **Android SDK / NDK:** Ottimizzato per API 34+ (Gestione dei servizi in foreground in contesti protetti)
+* **Encryption Standards:** RSA 2048-bit, X.509 Certificates, PKCS12 Keystores
+* **Forensic Analysis Tools:** Wireshark, Nmap Scripting Engine (NSE)
+
+---
+
+## 🚀 Sviluppo e Contributi
+
+### Come compilare il Core Nmap (C++)
+Lo script automatizzato gestisce il download delle sorgenti stabili, la configurazione e la compilazione incrociata delle librerie e l'importazione degli asset NSE:
+
+```bash
 cd app/src/main/cpp
 ./make_nmap.sh
-```
-
-The script will do the following:
-
-1) Download latest stable Nmap source and openssl source.
-2) Configure and compile openssl and Nmap for `armeabi-v7a` and `arm64-v8a`, `x86` and `x86_64`.
-3) Import Nmap resource files (like `nmap-services`) to Android assets directory.
-4) Import NSE scripts included with Nmap source to Android assets directory.
-
-### How to build the APK if you can't cross-compile Nmap
-
-1) Download an apk from the [release page](https://github.com/ruvolof/anmap-wrapper/releases).
-2) Extract the content of the APK.
-3) Copy the `lib` folder inside the apk to `app/src/main/cpp/libs`.
-4) Copy the `assets` folder inside the apk to `app/src/main/assets`.
-5) Build the APK.
 
 
+
+
+📜 Licenza e Note
+Questo software è sviluppato a scopi di ricerca, analisi difensiva e Penetration Testing nei laboratori di Cybersecurity.
