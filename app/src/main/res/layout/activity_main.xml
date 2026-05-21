@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tech_bg_celeste"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="24dp"
+            android:paddingStart="4dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Guardian MTD"
+                android:textColor="@color/tech_blue_primary"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.02"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mobile Threat Defense &amp; Perimeter Audit Suite"
+                android:textColor="@color/tech_text_muted"
+                android:textSize="14sp"
+                android:layout_marginTop="2dp"/>
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="@color/tech_surface_white"
+            app:cardCornerRadius="16dp"
+            app:strokeColor="#D1E3F8"
+            app:strokeWidth="1dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🕵️ RECONNAISSANCE ENGINE (Nmap)"
+                    android:textColor="@color/tech_text_dark"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="12dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Subnet locale o IP Target (es: 192.168.1.0/24)"
+                    android:textColorHint="@color/tech_text_muted"
+                    app:hintTextColor="@color/tech_blue_primary"
+                    app:boxStrokeColor="@color/tech_blue_primary"
+                    android:layout_marginBottom="12dp"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etIpAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/tech_text_dark"
+                        android:textSize="15sp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnScan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="AVVIA SCANSIONE RETE"
+                    app:backgroundTint="@color/tech_blue_primary"
+                    android:textColor="@color/white"
+                    app:cornerRadius="12dp"
+                    android:layout_marginBottom="16dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=">> ACTIVE HOSTS REGISTRY:"
+                    android:textColor="@color/tech_text_muted"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="6dp"/>
+
+                <TextView
+                    android:id="@+id/tvDetectedHosts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/tech_console_bg"
+                    android:padding="10dp"
+                    android:text="In attesa di esecuzione audit per mappare i nodi attivi..."
+                    android:textColor="@color/tech_text_dark"
+                    android:fontFamily="monospace"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="12dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=">> RAW TERMINAL CONSOLE:"
+                    android:textColor="@color/tech_text_muted"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="6dp"/>
+
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:background="@color/tech_console_bg"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tvNmapResult"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Console di diagnostica pronta..."
+                        android:textColor="@color/tech_text_dark"
+                        android:fontFamily="monospace"
+                        android:textSize="12sp"/>
+                </androidx.core.widget.NestedScrollView>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="@color/tech_surface_white"
+            app:cardCornerRadius="16dp"
+            app:strokeColor="#D1E3F8"
+            app:strokeWidth="1dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🛡️ NDR ENGINE &amp; NETWORK TELEMETRY"
+                    android:textColor="@color/tech_text_dark"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/tvVpnStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ENGINE STATUS: SLEEP"
+                    android:textColor="@color/security_drop"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="12dp"
+                    android:textStyle="bold"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnVpnToggle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ATTIVA PROCESSO CORRELAZIONE"
+                    app:backgroundTint="@color/tech_blue_primary"
+                    android:textColor="@color/white"
+                    app:cornerRadius="12dp"
+                    android:layout_marginBottom="16dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E2E8F0"
+                    android:layout_marginBottom="12dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCheckNetwork"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ESEGUI AUDIT VETTORI RETE (ANTI-MiTM)"
+                    app:backgroundTint="#4A5568"
+                    android:textColor="@color/white"
+                    app:cornerRadius="12dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/tvNetworkHealth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Network Link: Non verificato."
+                    android:textColor="@color/tech_text_muted"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="16dp"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E2E8F0"
+                    android:layout_marginBottom="12dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=">> INTERCEPTED LOG STREAM (DoH Proxy):"
+                    android:textColor="@color/tech_text_muted"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="6dp"/>
+
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:background="@color/tech_console_bg"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tvLiveTraffic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="In attesa di attivazione NDR per la cattura dei log..."
+                        android:textColor="@color/tech_text_muted"
+                        android:fontFamily="monospace"
+                        android:textSize="12sp"/>
+                </androidx.core.widget.NestedScrollView>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:cardBackgroundColor="@color/tech_surface_white"
+            app:cardCornerRadius="16dp"
+            app:strokeColor="#D1E3F8"
+            app:strokeWidth="1dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🚫 DNS FIREWALL &amp; POLICY ENFORCEMENT"
+                    android:textColor="@color/tech_text_dark"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="12dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Dominio FQDN da inserire in policy (es: evil.com)"
+                    android:textColorHint="@color/tech_text_muted"
+                    app:hintTextColor="@color/tech_blue_primary"
+                    app:boxStrokeColor="@color/tech_blue_primary"
+                    android:layout_marginBottom="12dp"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etDomainInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/tech_text_dark"
+                        android:textSize="15sp"
+                        android:inputType="textUri"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnDomainToggle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="INSERISCI IN REJECT POLICY"
+                    app:backgroundTint="@color/tech_blue_primary"
+                    android:textColor="@color/white"
+                    app:cornerRadius="12dp"
+                    android:layout_marginBottom="12dp"/>
+
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="@color/tech_console_bg"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tvDenyList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nessuna regola di drop attiva. Policy aperta."
+                        android:textColor="@color/tech_text_muted"
+                        android:textSize="13sp"/>
+                </androidx.core.widget.NestedScrollView>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

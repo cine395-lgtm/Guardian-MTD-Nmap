@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="tech_bg_celeste">#EBF2FA</color> <color name="tech_surface_white">#FFFFFF</color> <color name="tech_blue_primary">#0B57D0</color> <color name="tech_blue_secondary">#4FA8E6</color> <color name="tech_text_dark">#1A1C1E</color> <color name="tech_text_muted">#5E6368</color> <color name="tech_console_bg">#F1F5F9</color> <color name="security_drop">#BA1A1A</color> <color name="security_allow">#146C3A</color> <color name="purple_200">#4FA8E6</color>
+    <color name="purple_500">#0B57D0</color>
+    <color name="purple_700">#0842A0</color>
+    <color name="teal_200">#20B2AA</color>
+    <color name="teal_700">#008080</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+</resources>

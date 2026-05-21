@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.ANmapWrapper" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/tech_blue_primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/tech_blue_secondary</item>
+        <item name="colorSurface">@color/tech_surface_white</item>
+        <item name="colorOnSurface">@color/tech_text_dark</item>
+
+        <item name="android:colorBackground">@color/tech_bg_celeste</item>
+        <item name="android:windowBackground">@color/tech_bg_celeste</item>
+        <item name="android:statusBarColor">@color/tech_bg_celeste</item>
+        <item name="android:navigationBarColor">@color/tech_bg_celeste</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m" xmlns:tools="http://schemas.android.com/tools">true</item>
+    </style>
+</resources>
