@@ -60,3 +60,5 @@ cd app/src/main/cpp
 
 📜 Licenza e Note
 Questo software è sviluppato a scopi di ricerca, analisi difensiva e Penetration Testing nei laboratori di Cybersecurity.
+This project is a port of Nmap 7.99 for Android and uses the original Nmap Public Source License (NPSL).
+Questo progetto è un porting di Nmap 7.99 per Android e usa la licenza originale Nmap Public Source License (NPSL).
